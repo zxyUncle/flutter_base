@@ -11,4 +11,6 @@ const Map<String, String> zh = {
   //-------------------登录-------------------
   "title_cancel": "取消",
   "login_title": "标题",
+  "login_account": "请输入账号",
+  "login_password": "请输入密码",
 };

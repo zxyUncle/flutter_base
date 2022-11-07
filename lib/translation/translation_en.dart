@@ -11,4 +11,6 @@ const Map<String, String> en = {
   //-------------------登录-------------------
   "title_cancel": "cancel",
   "login_title": "title",
+  "login_account": "Please enter the account number",
+  "login_password": "Please input a password",
 };

@@ -10,7 +10,7 @@ const Color primaryColor = Color(0xff000000);
 const Color primaryBackground = Colors.white;
 const Color primaryWhite = Colors.white;
 const Color primaryBlack = Color(0xff12161F);
-const Color primaryGrey = Color(0xff999999);
+const Color primaryGrey = Color(0xffe1e1e1);
 const Color primaryRed = Color(0xFFE53935);
 const Color primaryCCC = Color(0xffCCCCCC);
 
