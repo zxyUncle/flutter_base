@@ -31,7 +31,7 @@ class EventManage {
         }
       }
     } catch (e) {
-      myPrint(e);
+      loggin(e);
     }
   }
 

@@ -13,7 +13,6 @@ import 'common/default_404.dart';
 
 void main() {
   initConfig();
-  initView();
   runApp(MyApp(
     routerName: Routers.login,
   ));
@@ -26,28 +25,7 @@ void initConfig() {
   AppConfig().initData(false);
 }
 
-void initView(){
-  EasyRefresh.defaultHeaderBuilder = () => ClassicHeader(
-    dragText: 'Pull to refresh'.tr,
-    armedText: 'Release ready'.tr,
-    readyText: 'Refreshing...'.tr,
-    processingText: 'Refreshing...'.tr,
-    processedText: 'Succeeded'.tr,
-    noMoreText: 'No more'.tr,
-    failedText: 'Failed'.tr,
-    messageText: 'Last updated at %T'.tr,
-  );
-  EasyRefresh.defaultFooterBuilder = () => ClassicFooter(
-    dragText: 'Pull to load'.tr,
-    armedText: 'Release ready'.tr,
-    readyText: 'Loading...'.tr,
-    processingText: 'Loading...'.tr,
-    processedText: 'Succeeded'.tr,
-    noMoreText: 'No more'.tr,
-    failedText: 'Failed'.tr,
-    messageText: 'Last updated at %T'.tr,
-  );
-}
+
 
 class MyApp extends StatefulWidget {
   String? routerName;
@@ -63,7 +41,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    initView();
   }
   @override
   Widget build(BuildContext context) {

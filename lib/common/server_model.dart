@@ -103,7 +103,7 @@ loadServerList() async {
         }
       }
     } catch (e) {
-      myPrint(e);
+      loggin(e);
     }
   }
 }

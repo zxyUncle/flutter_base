@@ -66,7 +66,7 @@ class Http {
         responseBody: true,
         error: true,
         logPrint: (message) {
-          myPrint(message);
+          loggin(message);
         },
       ),
     );
@@ -174,14 +174,14 @@ class Http {
         } else {
           result = BaseResult(apiUnknownError, "network_error".tr);
         }
-        myPrint(error);
+        loggin(error);
       }
     } catch (e) {
       if (loading ?? false) {
         EasyLoading.dismiss();
       }
       result = BaseResult(apiUnknownError, e.toString());
-      myPrint(e);
+      loggin(e);
     }
     try {
       if (result.success()) {
@@ -195,7 +195,7 @@ class Http {
         showToast(result.message);
       }
     } catch (e) {
-      myPrint(e);
+      loggin(e);
     }
     return result;
   }
@@ -235,7 +235,7 @@ class BaseResult {
         message = json.toString();
       }
     } catch (e) {
-      myPrint(e);
+      loggin(e);
     }
   }
 

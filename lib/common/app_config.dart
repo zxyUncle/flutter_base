@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -52,10 +53,25 @@ class AppConfig {
       isApp = app;
       await getAppConfigData();
     } catch (error) {
-      myPrint(error);
+      loggin(error);
     }
-    //初始化数据--end
-    //初始化配置--start
+    //初始化加载框
+    initEasyLoading();
+    //initEasyRefresh
+    initEasyRefresh();
+    try {
+      if (!isRelease) {
+        HttpProxy httpProxy = await HttpProxy.createHttpProxy();
+        HttpOverrides.global = httpProxy;
+      }
+    } catch (error) {
+      loggin(error);
+    }
+    //初始化配置--end
+  }
+
+  //初始化加载框
+  initEasyLoading() {
     try {
       EasyLoading.instance
         ..indicatorType = EasyLoadingIndicatorType.ring
@@ -64,20 +80,41 @@ class AppConfig {
         ..indicatorColor = const Color(0xffFFFFFF)
         ..textColor = const Color(0xffFFFFFF)
         ..boxShadow = []
-        ..contentPadding =  EdgeInsets.all(20.w)
+        ..contentPadding = EdgeInsets.all(20.w)
         ..userInteractions = true;
     } catch (error) {
-      myPrint(error);
+      loggin(error);
     }
-    try {
-      if (!isRelease) {
-        HttpProxy httpProxy = await HttpProxy.createHttpProxy();
-        HttpOverrides.global = httpProxy;
-      }
-    } catch (error) {
-      myPrint(error);
-    }
-    //初始化配置--end
+  }
+
+  //初始化刷新加载
+  initEasyRefresh() {
+    // EasyRefresh.defaultHeaderBuilder = () => CupertinoHeader();
+    // EasyRefresh.defaultFooterBuilder = () => CupertinoFooter();
+    EasyRefresh.defaultHeaderBuilder = () => ClassicHeader(
+          showMessage: false,
+          showText: true,
+          dragText: 'Pull to refresh'.tr,
+          armedText: 'Release ready'.tr,
+          readyText: 'Refreshing...'.tr,
+          processingText: 'Refreshing...'.tr,
+          processedText: 'Succeeded'.tr,
+          noMoreText: 'No more'.tr,
+          failedText: 'Failed'.tr,
+          messageText: 'Last updated at %T'.tr,
+        );
+    EasyRefresh.defaultFooterBuilder = () => ClassicFooter(
+          showMessage: false,
+          showText: true,
+          dragText: 'Pull to load'.tr,
+          armedText: 'Release ready'.tr,
+          readyText: 'Loading...'.tr,
+          processingText: 'Loading...'.tr,
+          processedText: 'Succeeded'.tr,
+          noMoreText: 'No more'.tr,
+          failedText: 'Failed'.tr,
+          messageText: 'Last updated at %T'.tr,
+        );
   }
 
   /*
@@ -97,13 +134,13 @@ class AppConfig {
         "token": data["token"] ?? "",
         "mobile": data["mobile"] ?? "",
       });
-      myPrint("*************接收到app的参数*************");
-      myPrint(data);
+      loggin("*************接收到app的参数*************");
+      loggin(data);
     } on MissingPluginException catch (error) {
       if (isApp) {
         showToast(error.message);
       } else {
-        myPrint(error.message);
+        loggin(error.message);
       }
     }
   }
@@ -146,7 +183,7 @@ class AppConfig {
       if (isApp) {
         showToast(error.message);
       } else {
-        myPrint(error.message);
+        loggin(error.message);
       }
     }
   }
@@ -160,7 +197,7 @@ class AppConfig {
       if (isApp) {
         showToast(error.message);
       } else {
-        myPrint(error.message);
+        loggin(error.message);
       }
     }
   }
@@ -194,7 +231,7 @@ class AppConfig {
       if (isApp) {
         showToast(error.message);
       } else {
-        myPrint(error.message);
+        loggin(error.message);
       }
     }
   }
@@ -209,7 +246,7 @@ class AppConfig {
       if (isApp) {
         showToast(error.message);
       } else {
-        myPrint(error.message);
+        loggin(error.message);
       }
     }
   }
