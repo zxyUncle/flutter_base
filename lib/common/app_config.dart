@@ -74,14 +74,17 @@ class AppConfig {
   initEasyLoading() {
     try {
       EasyLoading.instance
-        ..indicatorType = EasyLoadingIndicatorType.ring
+        ..displayDuration = const Duration(milliseconds: 2000)
+        ..indicatorType = EasyLoadingIndicatorType.ring //样式
         ..loadingStyle = EasyLoadingStyle.custom
+        ..indicatorSize = 30   //指示器大小
+        ..radius = 10  //圆角
         ..backgroundColor = const Color(0x77000000)
         ..indicatorColor = const Color(0xffFFFFFF)
         ..textColor = const Color(0xffFFFFFF)
         ..boxShadow = []
-        ..contentPadding = EdgeInsets.all(20.w)
-        ..userInteractions = true;
+        ..contentPadding = EdgeInsets.all(10.w)
+        ..dismissOnTap = true;
     } catch (error) {
       loggin(error);
     }

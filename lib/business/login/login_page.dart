@@ -1,16 +1,13 @@
-import 'dart:ffi';
-
-import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/common/const.dart';
+import 'package:flutter_base/common/http.dart';
 import 'package:flutter_base/utils/app_bar_utils.dart';
 import 'package:flutter_base/utils/easy_refresh_utils.dart';
 import 'package:flutter_base/utils/toast_utils.dart';
 import 'package:flutter_base/utils/utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -45,7 +42,11 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _onLogin() async {
-    showToast('登录');
+    showLoading();
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.pop(context);
+      showToast('登录成功');
+    });
   }
 
   _body() {
@@ -67,16 +68,16 @@ class _LoginPageState extends State<LoginPage> {
             height: 30.w,
           ),
           //账号
-          viewTextFild('login_account'.tr, TextInputType.number),
+          viewTextFild('login_account'.tr),
           SizedBox(
             height: 20.w,
           ),
           //密码
-          viewTextFild('login_password'.tr, TextInputType.number),
+          viewTextFild('login_password'.tr, isPassowrd: true),
           SizedBox(height: 20.w),
           //登录
           _viewLogin(),
-          SizedBox(height: 50.w),
+          SizedBox(height: 60.w),
           Text(
             _appVersion,
             style: TextStyle(fontSize: 16.sp, color: Colors.black),
@@ -87,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   //输入框
-  Widget viewTextFild(hintMessage, keyboardTypeValue) {
+  Widget viewTextFild(hintMessage, {bool isPassowrd = false}) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10.w),
       decoration: BoxDecoration(
@@ -96,7 +97,8 @@ class _LoginPageState extends State<LoginPage> {
       ),
       child: TextField(
         maxLength: 18,
-        keyboardType: keyboardTypeValue,
+        obscureText: isPassowrd,
+        keyboardType: TextInputType.text,
         style: TextStyle(color: Colors.black, fontSize: 14.sp),
         decoration: InputDecoration(
             counterText: '',

@@ -134,7 +134,7 @@ class Http {
     BaseResult result;
     try {
       if (loading ?? false) {
-        EasyLoading.show();
+        showLoading();
       }
       Response? response;
       if (method == "get") {
