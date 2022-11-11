@@ -22,8 +22,8 @@ dependencies:
   shared_preferences: 2.0.15
   #屏幕比例适配
   flutter_screenutil: 5.5.3+1
-  #网络加载框
-  flutter_easyloading: 3.0.5
+  #Dialog、Popwindow、BottonSheetDialog
+  flutter_smart_dialog: 4.7.0
   #下拉刷新上拉加载
   easy_refresh: 3.0.4
   #网络请求
@@ -40,6 +40,8 @@ dependencies:
   dotted_line: 3.1.0
   #精准计算
   decimal: 2.2.0
+  #webView
+  flutter_inappwebview: 5.7.1
 
 dev_dependencies:
   flutter_test:

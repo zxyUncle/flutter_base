@@ -9,8 +9,10 @@ const Map<String, String> en = {
   'Last updated at %T': 'Last updated at %T',
 
   //-------------------登录-------------------
-  "title_cancel": "cancel",
-  "login_title": "title",
   "login_account": "Please enter the account number",
   "login_password": "Please input a password",
+
+  //-------------------其他-------------------
+  'dialog_cancel':"Cancel",
+  'dialog_comfirm':"Comfirm",
 };

@@ -132,13 +132,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_easyloading:
+  flutter_inappwebview:
     dependency: "direct main"
     description:
-      name: flutter_easyloading
+      name: flutter_inappwebview
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.0.5"
+    version: "5.7.1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -158,13 +158,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "5.5.3+1"
-  flutter_spinkit:
-    dependency: transitive
+  flutter_smart_dialog:
+    dependency: "direct main"
     description:
-      name: flutter_spinkit
+      name: flutter_smart_dialog
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.1.0"
+    version: "4.7.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter

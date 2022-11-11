@@ -4,10 +4,13 @@ import 'package:flutter_base/common/const.dart';
 import 'package:flutter_base/common/http.dart';
 import 'package:flutter_base/utils/app_bar_utils.dart';
 import 'package:flutter_base/utils/easy_refresh_utils.dart';
-import 'package:flutter_base/utils/toast_utils.dart';
+import 'package:flutter_base/utils/dialog_utils.dart';
 import 'package:flutter_base/utils/utils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
+
+import '../../common/router.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -38,15 +41,31 @@ class _LoginPageState extends State<LoginPage> {
         appBar: noAppBar(),
         body: easyRefreshSpringBack(child: _body()),
       ),
+      // navigatorObservers: [FlutterSmartDialog.observer],
+      builder: FlutterSmartDialog.init(),
     );
   }
 
   _onLogin() async {
-    showLoading();
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pop(context);
-      showToast('登录成功');
-    });
+    showNormalDialog(
+      title: '确认对话框',
+      content: '你确定要登录吗？',
+      onCancel: () {
+        dismissDialog();
+      },
+      onConfrim: () {
+        dismissDialog();
+        showLoading();
+        Future.delayed(const Duration(seconds: 2), () {
+          dismissDialog();
+          showToast('登录成功');
+          Get.offAllNamed(Routers.tabBar);
+        });
+      },
+      onDismiss: () {
+        loggin('onDismiss');
+      },
+    );
   }
 
   _body() {

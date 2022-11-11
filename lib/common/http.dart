@@ -1,10 +1,9 @@
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 
-import '../utils/toast_utils.dart';
+import '../utils/dialog_utils.dart';
 import '../utils/utils.dart';
 import 'app_config.dart';
 import 'router.dart';
@@ -158,11 +157,11 @@ class Http {
         );
       }
       if (loading ?? false) {
-        EasyLoading.dismiss();
+        dismissDialog();
       }
     } on DioError catch (error) {
       if (loading ?? false) {
-        EasyLoading.dismiss();
+        dismissDialog();
       }
       if (error.response != null && error.response?.data != null) {
         result = handleResponse(error.response!, raw);
@@ -178,7 +177,7 @@ class Http {
       }
     } catch (e) {
       if (loading ?? false) {
-        EasyLoading.dismiss();
+        dismissDialog();
       }
       result = BaseResult(apiUnknownError, e.toString());
       loggin(e);

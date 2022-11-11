@@ -1,10 +1,9 @@
-import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_base/common/router.dart';
 import 'package:flutter_base/translation/translation.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 
 import 'common/app_config.dart';
@@ -66,8 +65,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             initialRoute: widget.routerName,
             unknownRoute:
                 GetPage(name: '/notFound', page: () => const Default404()),
-            navigatorObservers: [routeObserver],
-            builder: EasyLoading.init(),
+            navigatorObservers: [routeObserver,FlutterSmartDialog.observer],
+            builder: FlutterSmartDialog.init(),
+
         );
       },
     );

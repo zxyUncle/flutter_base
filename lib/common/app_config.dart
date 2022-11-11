@@ -6,12 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_base/common/server_model.dart';
 import 'package:flutter_base/common/user_manage.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:http_proxy/http_proxy.dart';
 
-import '../utils/toast_utils.dart';
+import '../utils/dialog_utils.dart';
 import '../utils/utils.dart';
 import 'const.dart';
 import 'http.dart';
@@ -73,18 +72,18 @@ class AppConfig {
   //初始化加载框
   initEasyLoading() {
     try {
-      EasyLoading.instance
-        ..displayDuration = const Duration(milliseconds: 2000)
-        ..indicatorType = EasyLoadingIndicatorType.ring //样式
-        ..loadingStyle = EasyLoadingStyle.custom
-        ..indicatorSize = 30   //指示器大小
-        ..radius = 10  //圆角
-        ..backgroundColor = const Color(0x77000000)
-        ..indicatorColor = const Color(0xffFFFFFF)
-        ..textColor = const Color(0xffFFFFFF)
-        ..boxShadow = []
-        ..contentPadding = EdgeInsets.all(10.w)
-        ..dismissOnTap = true;
+      // EasyLoading.instance
+      //   ..displayDuration = const Duration(milliseconds: 2000)
+      //   ..indicatorType = EasyLoadingIndicatorType.ring //样式
+      //   ..loadingStyle = EasyLoadingStyle.custom
+      //   ..indicatorSize = 30   //指示器大小
+      //   ..radius = 10  //圆角
+      //   ..backgroundColor = const Color(0x77000000)
+      //   ..indicatorColor = const Color(0xffFFFFFF)
+      //   ..textColor = const Color(0xffFFFFFF)
+      //   ..boxShadow = []
+      //   ..contentPadding = EdgeInsets.all(10.w)
+      //   ..dismissOnTap = true;
     } catch (error) {
       loggin(error);
     }
