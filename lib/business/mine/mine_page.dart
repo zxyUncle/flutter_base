@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../utils/app_bar_utils.dart';
 
 class MinePage extends StatefulWidget {
   const MinePage({Key? key}) : super(key: key);
@@ -12,8 +15,11 @@ class MinePage extends StatefulWidget {
 class _MineState extends State<MinePage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.yellow,
+    return Scaffold(
+      appBar: noAppBar(backgroundColor: Colors.yellow),
+      body: Center(
+        child: Text('tab_mine'.tr),
+      ),
     );
   }
 }

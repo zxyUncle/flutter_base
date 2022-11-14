@@ -55,3 +55,4 @@ flutter:
 
   assets:
     - lib/asset/image/login/
+    - lib/asset/image/home/

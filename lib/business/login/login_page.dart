@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_base/common/const.dart';
 import 'package:flutter_base/common/http.dart';
 import 'package:flutter_base/utils/app_bar_utils.dart';
@@ -38,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: noAppBar(),
+        appBar: noAppBar(systemOverlayStyle: SystemUiOverlayStyle.dark),
         body: easyRefreshSpringBack(child: _body()),
       ),
       // navigatorObservers: [FlutterSmartDialog.observer],

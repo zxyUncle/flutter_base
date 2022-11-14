@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'common/app_config.dart';
 import 'common/const.dart';
 import 'common/default_404.dart';
+import 'utils/app_bar_utils.dart';
 
 void main() {
   initConfig();
@@ -24,23 +25,25 @@ void initConfig() {
   AppConfig().initData(false);
 }
 
-
-
 class MyApp extends StatefulWidget {
   String? routerName;
 
   MyApp({Key? key, this.routerName}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _MyAppState();
   }
 }
-class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    //取消蒙层
+    cancelMantle();
   }
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -48,26 +51,25 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       builder: (BuildContext context, Widget? child) {
         var translation = Translation();
         return GetMaterialApp(
-            theme: AppConfig().obtainThemeData(true),
-            darkTheme: AppConfig().obtainThemeData(false),
-            themeMode: AppConfig().getDeviceThemeMode(),
-            localizationsDelegates: const [
-              GlobalWidgetsLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales:
-                translation.keys.keys.map((e) => Locale(e)).toList(),
-            translations: translation,
-            locale: AppConfig().getDeviceLocale(),
-            fallbackLocale: Locale(translation.keys.keys.first),
-            routes: Routers.list,
-            initialRoute: widget.routerName,
-            unknownRoute:
-                GetPage(name: '/notFound', page: () => const Default404()),
-            navigatorObservers: [routeObserver,FlutterSmartDialog.observer],
-            builder: FlutterSmartDialog.init(),
-
+          theme: AppConfig().obtainThemeData(true),
+          darkTheme: AppConfig().obtainThemeData(false),
+          themeMode: AppConfig().getDeviceThemeMode(),
+          localizationsDelegates: const [
+            GlobalWidgetsLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales:
+              translation.keys.keys.map((e) => Locale(e)).toList(),
+          translations: translation,
+          locale: AppConfig().getDeviceLocale(),
+          fallbackLocale: Locale(translation.keys.keys.first),
+          routes: Routers.list,
+          initialRoute: widget.routerName,
+          unknownRoute:
+              GetPage(name: '/notFound', page: () => const Default404()),
+          navigatorObservers: [routeObserver, FlutterSmartDialog.observer],
+          builder: FlutterSmartDialog.init(),
         );
       },
     );

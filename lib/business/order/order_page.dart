@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../utils/app_bar_utils.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({Key? key}) : super(key: key);
@@ -12,8 +15,11 @@ class OrderPage extends StatefulWidget {
 class _OrderState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.yellow,
+    return Scaffold(
+      appBar: noAppBar(backgroundColor: Colors.green),
+      body: Center(
+        child: Text('tab_order'.tr),
+      ),
     );
   }
 }
