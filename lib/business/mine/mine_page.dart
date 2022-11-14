@@ -18,7 +18,7 @@ class _MineState extends State<MinePage> {
     return Scaffold(
       appBar: noAppBar(backgroundColor: Colors.yellow),
       body: Center(
-        child: Text('tab_mine'.tr),
+        child: TextField(),
       ),
     );
   }

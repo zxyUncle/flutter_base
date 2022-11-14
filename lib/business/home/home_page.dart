@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_base/utils/app_bar_utils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+
+import '../../common/const.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,8 +20,9 @@ class _HomeState extends State<HomePage> {
     return Scaffold(
       appBar: noAppBar(backgroundColor: Colors.red),
       body: Center(
-        child: Text('tab_main'.tr),
+        child: TextField(),
       ),
     );
   }
+
 }

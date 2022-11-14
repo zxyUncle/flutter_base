@@ -18,7 +18,7 @@ class _OrderState extends State<OrderPage> {
     return Scaffold(
       appBar: noAppBar(backgroundColor: Colors.green),
       body: Center(
-        child: Text('tab_order'.tr),
+        child: TextField(),
       ),
     );
   }

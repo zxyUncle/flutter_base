@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../common/const.dart';
+import 'KeepAliveWrapper.dart';
 
 class MyTabbar extends StatefulWidget {
   const MyTabbar({Key? key}) : super(key: key);
@@ -18,15 +19,20 @@ class MyTabbar extends StatefulWidget {
 }
 
 class _MyTabbarState extends State<MyTabbar> {
-  Color? selectBgColors;
+  Color? selectBgColors = Colors.red;
   Color? selectColor;
   int _currentIndex = 0;
   final _pageController = PageController();
   final List<Widget> _pageList = [
-    const HomePage(),
-    const OrderPage(),
-    const MinePage()
+    const KeepAliveWrapper(child: HomePage()),
+    const KeepAliveWrapper(child: OrderPage()),
+    const KeepAliveWrapper(child: MinePage())
   ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,13 +43,13 @@ class _MyTabbarState extends State<MyTabbar> {
         },
         itemCount: _pageList.length,
         controller: _pageController,
-        // physics: const NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
         selectedFontSize: 14.sp,
-        unselectedFontSize: 10.sp,
+        unselectedFontSize: 14.sp,
         backgroundColor: selectBgColors,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.black,
@@ -67,7 +73,7 @@ class _MyTabbarState extends State<MyTabbar> {
               padding: const EdgeInsets.only(bottom: 5),
               child: Image(
                 image: AssetImage(
-                    "${assetImage}home/${_currentIndex == 1 ? 'home_unselect' : 'home_select'}.png"),
+                    "${assetImage}order/${_currentIndex == 1 ? 'order_select' : 'order_unselect'}.png"),
                 width: 25.w,
                 height: 25.w,
               ),
@@ -80,7 +86,7 @@ class _MyTabbarState extends State<MyTabbar> {
               padding: const EdgeInsets.only(bottom: 5),
               child: Image(
                 image: AssetImage(
-                    "${assetImage}home/${_currentIndex == 2 ? 'home_unselect' : 'home_select'}.png"),
+                    "${assetImage}mine/${_currentIndex == 2 ? 'mine_select' : 'mine_unselect'}.png"),
                 width: 25.w,
                 height: 25.w,
               ),

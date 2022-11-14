@@ -56,3 +56,5 @@ flutter:
   assets:
     - lib/asset/image/login/
     - lib/asset/image/home/
+    - lib/asset/image/order/
+    - lib/asset/image/mine/

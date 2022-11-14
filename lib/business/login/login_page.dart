@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
       onConfrim: () {
         dismissDialog();
         showLoading();
-        Future.delayed(const Duration(seconds: 2), () {
+        Future.delayed(const Duration(seconds: 1), () {
           dismissDialog();
           showToast('登录成功');
           Get.offAllNamed(Routers.tabBar);
